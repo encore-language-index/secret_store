@@ -10,7 +10,7 @@ struct encore_str_object {
 };
 char *encore_str_data(encore_str s) { return s.object->data; }
 size_t encore_str_size(encore_str s) { return s.object->size; }
-encore_str encore_str_from_buffer(const void *p, size_t n) {
+encore_str encore_str_from_buffer(const char *p, size_t n) {
   encore_str s = {malloc(sizeof(*s.object) + n + 1)};
   assert(s.object);
   s.object->size = n;

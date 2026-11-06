@@ -4,13 +4,17 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-typedef struct encore_str_object encore_str_object;
-typedef struct {
-  encore_str_object *object;
-} encore_str;
-extern char *encore_str_data(encore_str);
-extern size_t encore_str_size(encore_str);
-extern encore_str encore_str_from_buffer(const void *, size_t);
+/* The include path is supplied by Encore. The relative fallback also
+ * supports the .14 bootstrap and SDK sibling-directory development. */
+#if defined(__has_include)
+# if __has_include(<runtime_abi.h>)
+#  include <runtime_abi.h>
+# else
+#  include "../core/runtime_abi.h"
+# endif
+#else
+# include "../core/runtime_abi.h"
+#endif
 static encore_str result(char code, const void *data, size_t size) {
   if (size > 2048)
     return encore_str_from_buffer("6", 1);
