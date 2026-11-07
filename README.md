@@ -25,3 +25,12 @@ DBUS_SESSION_BUS_ADDRESS=unix:path=/nonexistent/encore-test target/keyring-test 
 An opt-in real-backend test accepts `--roundtrip` and a unique key under
 `https://encore-keyring-test.invalid/`. It creates, replaces and removes only
 that test credential. Do not substitute a real registry key.
+
+## SDK development
+
+Encore pins this package as a Git submodule. Clone the complete SDK with
+`git clone --recurse-submodules --branch trunk https://github.com/encore-ecosystem/encore.git`
+and edit this package under `packages/secret-store/`. Sibling `path@` dependencies
+are resolved from that checkout. Encore CI tests the exact package commits
+with the compiler on all supported native targets. Published package archives
+rewrite path dependencies to exact index versions.

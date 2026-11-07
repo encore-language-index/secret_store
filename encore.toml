@@ -1,9 +1,8 @@
 [project]
+repository = "https://github.com/encore-language-index/secret_store"
 name = "secret_store"
 version = "0.1.0"
 encore = ">=0.1.6"
 description = "Operating-system credential storage without plaintext fallback"
 licence = "MIT"
-dependencies = [
-    "sys@core",
-]
+dependencies = []
